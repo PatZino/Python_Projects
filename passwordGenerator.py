@@ -20,5 +20,14 @@ for i in range(randint(8, 16)):
     password3 += choice(characters3)
 print(password3)
 
+print("_"*50)
+
+print("Print a random number in  the range of 1 - 20: ")
+randomNumber = randint(1, 20)
+print(randomNumber)
+
+
+
+
 
 
