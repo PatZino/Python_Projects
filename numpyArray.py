@@ -14,7 +14,6 @@ for k in range(3):
 testP = np.array([p])
 print(testP)
 
-
 print("_"*50)
 
 
