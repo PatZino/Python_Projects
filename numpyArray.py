@@ -26,6 +26,11 @@ print(a)
 
 print("\n")
 
+p = np.zeros([5])
+print(p)
+
+print("\n")
+
 b = np.ones((3, 3))
 print(b)
 
@@ -43,3 +48,10 @@ print("\n")
 
 e = np.eye(4)
 print(e)
+
+print("\n")
+x = np.linspace(0, 10, 10)
+print("x = ", x)
+
+print("\n")
+print(1/6)
