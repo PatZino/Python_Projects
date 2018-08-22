@@ -1,7 +1,11 @@
 import numpy as np
 
 
-def de(fobj, bounds, mut=0.8, crossp=0.7, popsize=20, its=1000):
+fobj = lambda x: sum(x**2)/len(x)
+bounds = [(-5, 5)] * 4
+
+
+def de(fobj, bounds, mut=0.8, crossp=0.7, popsize=20, its=20):
     dimensions = len(bounds)
     pop = np.random.rand(popsize, dimensions)
     min_b, max_b = np.asarray(bounds).T
@@ -30,5 +34,6 @@ def de(fobj, bounds, mut=0.8, crossp=0.7, popsize=20, its=1000):
         yield best, fitness[best_idx]
 
 
+for best, fitness in de(fobj, bounds):
 
-
+    print("best = ", best, "fitness = ", fitness)

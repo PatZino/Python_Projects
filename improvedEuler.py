@@ -28,7 +28,8 @@ for i in range(0, n-1):
 
 print("i", " "*4, "xi", " "*5, "yi", " "*8, "exact", " "*8, "error")
 for i in range(n):
-    print(i, " "*4,  round(x[i], 4), " "*4, round(y[i], 4), " "*7, round(exact[i], 4), " "*9, round(error[i], 4))
+    print(i, " "*4,  round(x[i], 4), " "*4, round(y[i], 4), " "*7,
+          round(exact[i], 4), " "*9, round(error[i], 4))
 
 
 plt.plot(x, y, 'o')

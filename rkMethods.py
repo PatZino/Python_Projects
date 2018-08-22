@@ -28,7 +28,8 @@ for i in range(0, n-1):
 
 print("i", " "*4, "xi", " "*5, "yi", " "*12, "exact", " "*12, "error")
 for i in range(n):
-    print(i, " "*4,  round(x[i], 6), " "*4, round(y[i], 6), " "*10, round(exact[i], 6), " "*9, round(error[i], 6))
+    print(i, " "*4,  round(x[i], 6), " "*4, round(y[i], 6), " "*10,
+          round(exact[i], 6), " "*9, round(error[i], 6))
 
 plt.plot(x, y, 'o')
 plt.xlabel("Value of x")
