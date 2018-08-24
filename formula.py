@@ -3,6 +3,38 @@ import math
 import random
 
 
+"""
+def summation(x):
+    Sum = sum(x ** 2)
+    return Sum / len(x)
+
+
+a = [1, 2, 3, 4, 5]
+#  print("sum = ", summation())
+"""
+
+
+def ackley (x, a=20, b=0.2, c=2*np.pi):
+    firstPart = -b * ((x ** 2) * 0.5)
+    secondPart = np.cos(np.radians(c * x))
+    result = -a * np.exp(firstPart) - np.exp(secondPart) + a + np.exp(1)
+    return result
+
+
+d = ackley(2)
+print("d = ", d)
+
+"""
+b = np.cos(np.radians(60))
+print("b = ", b)
+
+c = math.sin(math.radians(30))
+print("c = ", c)
+
+d = np.power(3, 2)
+print("d = ", d)
+"""
+"""
 def objective_function(x):
     sum = 0
     for i in range(len(x)):
@@ -14,7 +46,7 @@ def objective_function(x):
 
 a = objective_function([1, 2, 3])
 print("a = ", a)
-"""
+
 F = 0.6
 x1 = np.array([2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
 x2 = np.array([5, 3, 2, 7, 9, 13, 17, 19, 20, 25])

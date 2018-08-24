@@ -14,8 +14,8 @@ else:
     print("It is lesser than 5")
 """
 
-name= input("Enter your name\n")
-score=0
+name = input("Enter your name\n")
+score = 0
 Q1=input("Which of the following options is the closest in meaning to the phrase underlined in the sentence below? It"
          " is fascinating to see life forms cope with varied environmental conditions.\n" "(A) adopt to\n (B) adapt to"
          "\n (C) adept in\n (D) accept with\n Enter your answer here :\n ")

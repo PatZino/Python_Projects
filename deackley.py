@@ -18,7 +18,7 @@ def ackley(x1, x2):
 
     term1 = - a * np.exp(-b * ((1 / 2.) * sum1 ** (0.5)))
     term2 = - np.exp((1 / 2.) * sum2)
-
+    print("term1 + term2 + a + np.exp(1) ", term1 + term2 + a + np.exp(1))
     return term1 + term2 + a + np.exp(1)
 
 
@@ -52,7 +52,9 @@ plt.show()
 # initialize
 N = 10
 x1_init = np.random.uniform(x1.min(), x1.max(), N)
+print(x1_init)
 x2_init = np.random.uniform(x2.min(), x2.max(), N)
+print(x2_init)
 z_init = ackley(x1_init, x2_init)
 ax.plot(x1_init, x2_init, z_init, "o", c='red')
 plt.show()
