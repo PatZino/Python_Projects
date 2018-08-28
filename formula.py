@@ -14,6 +14,7 @@ a = [1, 2, 3, 4, 5]
 """
 
 
+
 def ackley (x, a=20, b=0.2, c=2*np.pi):
     firstPart = -b * ((x ** 2) * 0.5)
     secondPart = np.cos(np.radians(c * x))

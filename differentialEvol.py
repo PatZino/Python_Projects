@@ -11,8 +11,8 @@ def objective_function(x):
 bounds = [(-5, 5)] * 3
 
 
-def differntial_evolution(objective_function, bounds, max_gen=20, mutation_factor=0.8,
-                          crossover_probability=0.7, population_size=6):
+def differntial_evolution(objective_function, bounds, max_gen=8, mutation_factor=0.8,
+                          crossover_probability=0.7, population_size=4):
     """
     differential evolution program to minimize a function
     """
@@ -24,8 +24,10 @@ def differntial_evolution(objective_function, bounds, max_gen=20, mutation_facto
     initial_population = lower_bound + population * difference
     print("initial pop: ", initial_population)
     fitness = np.asarray([objective_function(ind) for ind in initial_population])
+    print("fitness : ", fitness)
     best_index = np.argmin(fitness)
     best = initial_population[best_index]
+    print("best : ", best)
     for i in range(max_gen):
         for j in range(population_size):
             indices = [index for index in range(population_size) if index != j]
@@ -44,7 +46,12 @@ def differntial_evolution(objective_function, bounds, max_gen=20, mutation_facto
             new_population = lower_bound + trial_vector * difference
 
             new_fitness = objective_function(new_population)
-            
+
+            print("new fitness : ", new_fitness)
+            print("fitness[", j, "]", fitness[j], "\n")
+
+            print("new_fitness.all() < fitness[j].all() :", new_fitness < fitness[j])
+
             if new_fitness < fitness[j]:
                 fitness[j] = new_fitness
                 population[j] = trial_vector
