@@ -16,7 +16,7 @@ def ackley(x1, x2):
     sum1 = x1 ** 2 + x2 ** 2
     sum2 = np.cos(c * x1) + np.cos(c * x2)
 
-    term1 = - a * np.exp(-b * ((1 / 2.) * sum1 ** (0.5)))
+    term1 = - a * np.exp(-b * ((1 / 2.) * sum1 ** 0.5))
     term2 = - np.exp((1 / 2.) * sum2)
     print("term1 + term2 + a + np.exp(1) ", term1 + term2 + a + np.exp(1))
     return term1 + term2 + a + np.exp(1)
