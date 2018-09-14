@@ -8,16 +8,16 @@ def objective_function(x):
     return sum / len(x)
 
 
-bounds = [(-5, 5)] * 3
+bounds = [(-5, 5)] * 5
 
 
-def differntial_evolution(objective_function, bounds, max_gen=8, mutation_factor=0.8,
-                          crossover_probability=0.7, population_size=4):
+def differntial_evolution(objective_function, bounds, max_gen=10, mutation_factor=0.8,
+                          crossover_probability=0.7, population_size=10):
     """
     differential evolution program to minimize a function
     """
 
-    dimension = 3
+    dimension = 5
     population = np.random.rand(population_size, dimension)
     lower_bound, upper_bound = np.asarray(bounds).T
     difference = np.fabs(lower_bound - upper_bound)
@@ -47,10 +47,10 @@ def differntial_evolution(objective_function, bounds, max_gen=8, mutation_factor
 
             new_fitness = objective_function(new_population)
 
-            print("new fitness : ", new_fitness)
-            print("fitness[", j, "]", fitness[j], "\n")
+            #  print("\nnew fitness : ", new_fitness)
+            #  print("fitness[", j, "]", fitness[j])
 
-            print("new_fitness.all() < fitness[j].all() :", new_fitness < fitness[j])
+            #  print("new_fitness.all() < fitness[j].all() :", new_fitness < fitness[j])
 
             if new_fitness < fitness[j]:
                 fitness[j] = new_fitness

@@ -14,17 +14,65 @@ a = [1, 2, 3, 4, 5]
 """
 
 
-
 def ackley (x, a=20, b=0.2, c=2*np.pi):
-    firstPart = -b * ((x ** 2) * 0.5)
-    secondPart = np.cos(np.radians(c * x))
-    result = -a * np.exp(firstPart) - np.exp(secondPart) + a + np.exp(1)
+    firstPart = 0
+    secondPart = 0
+    for i in range(len(x)):
+        firstPart += -b * ((x[i] ** 2) * 0.5)
+        secondPart += np.cos(c * x[i])
+        result = -a * np.exp(firstPart) - np.exp(secondPart) + a + np.exp(1)
     return result
 
 
-d = ackley(2)
-print("d = ", d)
+#  d = ackley(2)
+#  print("d = ", d)
 
+
+def ackley2D (x, y):
+    a = 20
+    b = 0.2
+    c = 2*np.pi
+    firstPart = 0
+    secondPart = 0
+    for i in range(len(x)):
+        firstPart += (-b * (((x[i] ** 2) * 0.5) + ((y[i] ** 2) * 0.5)))
+        secondPart += (np.cos(c * x[i]) + np.cos(c * y[i]))
+        #  result = -a * np.exp(firstPart) - np.exp(secondPart) + a + np.exp(1)
+    return -a * np.exp(firstPart) - np.exp(secondPart) + a + np.exp(1)
+
+
+alist = ['a1', 'a2', 'a3']
+blist = ['235', '456', '239']
+
+for i, a in enumerate(alist):
+    print(i, a)
+
+
+print("*"*50)
+
+for j, b in alist:
+    print(j, b)
+
+
+print("*"*50)
+
+for j, b, c in blist:
+    print(j, b, c)
+
+
+print("*"*50)
+
+
+pop = [-0.1, -0.2, -0.3, 0.4, -0.5, -0.6]
+pop2 = [3, -5, -5, -5,  3]
+
+fitness = [ackley2D(ind1, ind2)for ind1 in [pop] for ind2 in [pop]]
+fitness2 = ackley(pop)
+fitness3 = ackley(pop2)
+
+print("fitness = ", fitness)
+print("fitness2 = ", fitness2)
+print("fitness3 = ", fitness3)
 """
 b = np.cos(np.radians(60))
 print("b = ", b)
