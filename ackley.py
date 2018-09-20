@@ -18,10 +18,10 @@ def ackley (x):
 print("ackley = ", ackley([0.1, 0.2, 0.3, 0.4]))
 print("ackley2 = ", ackley([0.5887506,  0.10202441,  0.04021812, 0.96950722, 0.44949978]))
 
-bounds = [(-32, 32)] * 5
+bounds = [(-5, 5)] * 5
 
 
-def differential_evolution(ackley, bounds, max_gen=500, mutation_factor=0.8,
+def differential_evolution(ackley, bounds, max_gen=1000, mutation_factor=0.8,
                           crossover_probability=0.7, population_size=10):
     dimension = 5
     population = np.random.rand(population_size, dimension)
