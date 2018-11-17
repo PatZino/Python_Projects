@@ -1,6 +1,4 @@
 import numpy as np
-from matplotlib import pyplot as plt
-import math
 
 
 x0 = 0
@@ -23,17 +21,11 @@ for i in range(0, n-1):
 
     x[i+1] = x[i] + h
     y[i+1] = y[i] + (1/6)*(k1 + 2*k2 + 2*k3 + k4)
-    exact[i + 1] = math.exp(x[i + 1]) - x[i + 1] - 1
+    exact[i + 1] = np.exp(x[i + 1]) - x[i + 1] - 1
     error[i + 1] = exact[i + 1] - y[i + 1]
 
-print("i", " "*4, "xi", " "*5, "yi", " "*12, "exact", " "*12, "error")
+print("i", " "*2, "x", " "*5, "y", " "*10, "exact", " "*5, "error")
 for i in range(n):
-    print(i, " "*4,  round(x[i], 6), " "*4, round(y[i], 6), " "*10,
-          round(exact[i], 6), " "*9, round(error[i], 6))
+    print(i, format(x[i], '6f'), "\t", format(y[i], '6f'), "\t", format(exact[i], '6f'), "\t", format(error[i], '6f'))
 
-plt.plot(x, y, 'o')
-plt.xlabel("Value of x")
-plt.ylabel("Value of y")
-plt.title("Runge-Kutta method")
-plt.show()
 

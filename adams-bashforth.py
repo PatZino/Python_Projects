@@ -1,5 +1,4 @@
 import numpy as np
-import math
 
 
 x0 = 0
@@ -10,6 +9,7 @@ h = 0.2
 x = np.zeros([12])
 y = np.zeros([12])
 exact = np.zeros([12])
+error = np.zeros([12])
 
 y[0] = y0
 x[0] = x0
@@ -39,8 +39,9 @@ for i in range(n, 11):
     y[i+1] = y[i] + e
 
 
-print("i", "\t", "x[i]", "\t", "y[i]", "\t", "exact[i]")
+print("i", " "*7, "x", " "*5, "y", " "*10, "exact", " "*5, "error")
 for i in range(0, 11):
-    exact[i + 1] = math.exp(x[i + 1]) - x[i + 1] - 1
-    print(i, "\t", round(x[i], 1), "\t", round(y[i], 6),
-          "\t", round(exact[i], 6))
+    exact[i + 1] = np.exp(x[i + 1]) - x[i + 1] - 1
+    error[i + 1] = exact[i + 1] - y[i + 1]
+    print(i, " "*3,  format(x[i], '6f'), "\t", format(y[i], '6f'), "\t", format(exact[i], '6f'), "\t",
+          format(error[i], '6f'))

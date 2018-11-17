@@ -4,14 +4,14 @@ import numpy as np
 def objective_function(x):
     sum = 0
     for i in range(len(x)):
-        sum += x[i]**2
+        sum += x[i] ** 2
     return sum / len(x)
 
 
 bounds = [(-5, 5)] * 5
 
 
-def differential_evolution(objective_function, bounds, max_gen=100, mutation_factor=0.8,
+def differntial_evolution(objective_function, bounds, max_gen=940, mutation_factor=0.8,
                           crossover_probability=0.7, population_size=10):
     """
     differential evolution program to minimize a function
@@ -32,17 +32,17 @@ def differential_evolution(objective_function, bounds, max_gen=100, mutation_fac
         for j in range(population_size):
             indices = [index for index in range(population_size) if index != j]
 
-            x0, x1, x2 = population[np.random.choice(indices, 3, replace=False)]
-            
-            mutant_vector = np.clip(x0 + mutation_factor * (x1 - x2), 0, 1)
-            
+            x0, x1, x2, x3, x4 = population[np.random.choice(indices, 5, replace=False)]
+
+            mutant_vector = np.clip(x0 + mutation_factor * (x1 - x2 + x3 - x4), 0, 1)
+
             crossover = np.random.rand(dimension) < crossover_probability
 
             if not np.any(crossover):
                 crossover[np.random.randint(0, dimension)] = True
 
             trial_vector = np.where(crossover, mutant_vector, population[j])
-            
+
             new_population = lower_bound + trial_vector * difference
 
             new_fitness = objective_function(new_population)
@@ -61,7 +61,7 @@ def differential_evolution(objective_function, bounds, max_gen=100, mutation_fac
         yield best, fitness[best_index]
 
 
-print(differential_evolution.__doc__)
-for best, fitness in differential_evolution(objective_function, bounds):
+print(differntial_evolution.__doc__)
+for best, fitness in differntial_evolution(objective_function, bounds):
     print("best = ", best, "fitness = ", fitness)
 

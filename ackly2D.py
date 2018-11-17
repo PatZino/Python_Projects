@@ -24,12 +24,13 @@ def ackley(x):
 
 print("ackley = ", ackley([0.1, 0.2, 0.3, 0.4]))
 
-bounds = [(-5, 5)] * 8
+bounds = [(-5, 5)] * 3
 
 
-def differntial_evolution(ackley, bounds, max_gen=100, mutation_factor=0.8,
-                          crossover_probability=0.7, population_size=30):
-    dimension = 8
+#  using DE/best/1
+def differntial_evolution(ackley, bounds, max_gen=500, mutation_factor=0.8,
+                          crossover_probability=0.7, population_size=10):
+    dimension = 3
     population = np.random.rand(population_size, dimension)
     print("population : \n", population)
     lower_bound, upper_bound = np.asarray(bounds).T
@@ -42,26 +43,6 @@ def differntial_evolution(ackley, bounds, max_gen=100, mutation_factor=0.8,
 
     fitness = np.asarray([ackley(ind) for ind in initial_population])
     print("fitness : ", fitness)
-    """
-    print("initial pop", initial_population[0][1])
-    exit(1)
-    fitness_list = []
-    for i in range(0, 10):
-        fitness_list.append(ackley(initial_population[i][:]))
-    fitness = np.asarray(fitness_list)
-
-    #fitness = np.asarray([ackley(ind, ind2) for ind in [initial_population] for ind2 in [initial_population]])
-    print("fitness : \n", fitness)
-    
-    """
-
-    """ 
-    best_index = np.unravel_index(np.argmin(fitness), fitness.shape)
-    print("best_index : \n", best_index)
-    best = initial_population[best_index[0]]
-    print("best : \n", best, "\n")
-    """
-
     best_index = np.argmin(fitness)
     print("best_index : \n", best_index)
     best = initial_population[best_index]
@@ -71,7 +52,10 @@ def differntial_evolution(ackley, bounds, max_gen=100, mutation_factor=0.8,
         for j in range(population_size):
             indices = [index for index in range(population_size) if index != j]
 
-            x0, x1, x2 = population[np.random.choice(indices, 3, replace=False)]
+            x0 = population[np.argmin(fitness)]
+            #  print("x0 : ", x0)
+            x1, x2 = population[np.random.choice(indices, 2, replace=False)]
+            #  print("x1 : ", x1, "x2 : ", x2, "\n")
 
             mutant_vector = np.clip(x0 + mutation_factor * (x1 - x2), 0, 1)
             #  print("\n mutant_vector[", j, "]\n", mutant_vector)
